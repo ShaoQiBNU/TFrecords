@@ -200,7 +200,10 @@ if __name__ == '__main__':
 
 ## 2. 利用队列高效读取
 
-> 高效的读取方法应该是一个线程专门读取数据，一个线程专门做训练（前向反向传播），读取数据的线程应该维护一个队列(queue)，不断读取数据，压入队列，tensorflow里面常用的是FIFO queue，训练的线程每次从这个队列里面读取一个batch的训练数据用来训练。可以使用tf.string_input_produce创建上述的队列(filename queue)，然后通过读取文件名队列的文件名，进行解析，将解析得到的训练样例压入训练样例队列(example queue)。最后进行训练的时候可以使用tf.train.shuffle_batch来获取一个随机打乱顺序的batch，代码如下：
+> 高效的读取方法应该是一个线程专门读取数据，一个线程专门做训练（前向反向传播），读取数据的线程应该维护一个队列(queue)，不断读取数据，压入队列，tensorflow里面常用的是FIFO queue，训练的线程每次从这个队列里面读取一个batch的训练数据用来训练。如图所示：
+![image](https://github.com/ShaoQiBNU/TFrecords/blob/master/images/1.gif)
+
+> 可以使用tf.string_input_produce创建上述的队列(filename queue)，然后通过读取文件名队列的文件名，进行解析，将解析得到的训练样例压入训练样例队列(example queue)。最后进行训练的时候可以使用tf.train.shuffle_batch来获取一个随机打乱顺序的batch，代码如下：
 
 ```python
 # -*- coding: utf-8 -*-
