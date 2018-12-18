@@ -40,7 +40,7 @@ def read_and_check(filename):
     image = (example.features.feature['img'].bytes_list.value[0]) 
     label = (example.features.feature['label'].int64_list.value[0])
 
-    ######## img从string变成unint8 ########
+    ######## img从string变成unint8 注意不是所有的图片都是unint8格式，写入时需注意格式，解码时要对应 ########
     img = np.fromstring(image, dtype=np.uint8)
 
     ######## img reshape ########
