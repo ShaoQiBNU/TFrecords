@@ -8,7 +8,7 @@ Tensorflow 处理自己的数据集
 
 ## (一) 写入TFrecords
 ### 1. 数据
-> 数据集采用是102类的鲜花数据集，链接为：http://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/.， 数据格式为jpg，数据集里有setid.mat参数文件，此文件是一个字典数据，其中包含三个key：trnid，tstid，valid，tstid为训练集id，trnid为测试集id，valid为验证集id。数据size不全都一样，因此将训练集中的影像全部做crop处理，裁剪成500 x 500大小的影像，然后制作成TFrecords文件。
+> 数据集采用是102类的鲜花数据集，链接为：http://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/. 数据格式为jpg，数据集里有setid.mat参数文件，此文件是一个字典数据，其中包含三个key：trnid，tstid，valid，tstid为训练集id，trnid为测试集id，valid为验证集id。数据size不全都一样，因此将训练集中的影像全部做crop处理，裁剪成500 x 500大小的影像，然后制作成TFrecords文件。
 
 ### 2. Feature
 > 标准的作法是将所有的变量先包装成Feature，然后将相关的Features（例如图片资料、标示等）组成一个Example，最后再将所有的Examples 存入TFRecords 中。包装Feature有一些基本小函数，代码如下：
