@@ -304,3 +304,13 @@ with tf.Session() as sess:
   coord.request_stop()
   coord.join(threads)
 ```
+
+# 三. dataset API
+
+> tensorflow的Dataset API可以处理消费自己数据，使用方法如下：
+
+http://d0evi1.com/tensorflow/datasets/.
+
+https://zhuanlan.zhihu.com/p/30751039.
+
+https://blog.csdn.net/yeqiustu/article/details/79793454.
